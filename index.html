@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Something Special</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff5f7;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #start {
+      width: 100%;
+    }
+
+    h1 {
+      font-size: clamp(24px, 6vw, 40px);
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 18px 40px;
+      font-size: 22px;
+      font-weight: bold;
+      background: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      max-width: 100%;
+      touch-action: manipulation;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    #prank {
+      display: none;
+      width: 100%;
+    }
+
+    #prank img {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      max-height: 75dvh;
+      object-fit: contain;
+      margin: auto;
+      border-radius: 12px;
+    }
+
+    body.reveal {
+      background: #ff4444;
+    }
+
+    @media (max-width: 600px) {
+      button {
+        width: 85%;
+        max-width: 320px;
+      }
+
+      #prank h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="start">
+    <h1>Trust me.</h1>
+    <button onclick="showPrank()">CLICK ME</button>
+  </div>
+
+  <div id="prank">
+    <h1>tangina mo pakyu!</h1>
+    <img src="middlefinger.gif"
+         alt="AAHAHAHAHHAAHHAHA">
+  </div>
+
+  <script>
+    function showPrank() {
+      document.getElementById("start")
+        .style.display = "none";
+
+      document.getElementById("prank")
+        .style.display = "block";
+
+      document.body.classList.add("reveal");
+    }
+  </script>
+
+</body>
+</html>
