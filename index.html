@@ -6,7 +6,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>Something Special</title>
+  <title>pee pee poo poo</title>
 
   <style>
     * {
@@ -15,6 +15,7 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       min-height: 100dvh;
       display: flex;
       align-items: center;
@@ -23,9 +24,10 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
+      transition: background 0.3s;
     }
 
-    #start {
+    #start, #prank {
       width: 100%;
     }
 
@@ -35,16 +37,22 @@
     }
 
     button {
-      padding: 18px 40px;
-      font-size: 22px;
+      width: 85%;
+      max-width: 320px;
+      padding: 20px 35px;
+      font-size: 24px;
       font-weight: bold;
       background: #ff4d88;
       color: white;
       border: none;
       border-radius: 15px;
       cursor: pointer;
-      max-width: 100%;
       touch-action: manipulation;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
     }
 
     button:active {
@@ -53,7 +61,6 @@
 
     #prank {
       display: none;
-      width: 100%;
     }
 
     #prank img {
@@ -62,7 +69,7 @@
       max-width: 500px;
       max-height: 75dvh;
       object-fit: contain;
-      margin: auto;
+      margin: 0 auto;
       border-radius: 12px;
     }
 
@@ -70,14 +77,18 @@
       background: #ff4444;
     }
 
-    @media (max-width: 600px) {
-      button {
-        width: 85%;
-        max-width: 320px;
-      }
+    body.reveal h1 {
+      color: white;
+      margin-bottom: 20px;
+    }
 
+    @media (max-width: 600px) {
       #prank h1 {
         font-size: 28px;
+      }
+
+      #prank img {
+        max-height: 70dvh;
       }
     }
   </style>
@@ -85,26 +96,44 @@
 
 <body>
 
+  <!-- First Screen -->
   <div id="start">
-    <h1>Trust me.</h1>
-    <button onclick="showPrank()">CLICK ME</button>
+    <h1>Hello Sophia.</h1>
+    <button type="button" onclick="showPrank()">
+      CLICK ME!
+    </button>
   </div>
 
+  <!-- Prank Screen -->
   <div id="prank">
-    <h1>tangina mo pakyu!</h1>
+    <h1>tangina mo pakyu gago yawa</h1>
     <img src="middlefinger.gif"
-         alt="AAHAHAHAHHAAHHAHA">
+         alt="Surprise!">
   </div>
+
+  <!-- Prank Audio -->
+  <audio id="prankSound" preload="auto">
+    <source src="prank.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     function showPrank() {
-      document.getElementById("start")
-        .style.display = "none";
+      // Hide the first screen
+      document.getElementById("start").style.display = "none";
 
-      document.getElementById("prank")
-        .style.display = "block";
+      // Show the GIF
+      document.getElementById("prank").style.display = "block";
 
+      // Change background color
       document.body.classList.add("reveal");
+
+      // Play audio
+      const audio = document.getElementById("prankSound");
+      audio.currentTime = 0;
+
+      audio.play().catch(error => {
+        console.log("Audio playback failed:", error);
+      });
     }
   </script>
 
